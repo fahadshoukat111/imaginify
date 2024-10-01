@@ -1,4 +1,4 @@
-/* eslint-disable camelcase */
+'use server'
 import { createUser, deleteUser, updateUser } from "@/lib/actions/user.action";
 import { clerkClient, WebhookEvent } from "@clerk/nextjs/server";
 import { headers } from "next/headers";

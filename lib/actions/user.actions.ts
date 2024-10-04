@@ -1,20 +1,30 @@
+"use server";
+
 import { revalidatePath } from "next/cache";
 
 import User from "../database/models/user.models";
-import { connectToDatabase } from "../database/mongoose";
+import {connectToDatabase}  from "../database/mongoose";
 
 export async function createUser(user) {
+  console.log("userrrrr",user)
   try {
     await connectToDatabase();
     const newUser = await User.create(user);
+    console.log("user", user);
     return JSON.parse(JSON.stringify(newUser));
   } catch (error) {}
 }
 
 export async function getUserById(userId) {
   try {
-    await connectToDatabase();
-    const user = await User.findOne({ clerkId: userId });
+    // await connectToDatabase();
+    // const user = await User.findOne({ clerkId: userId });
+    // return JSON.parse(JSON.stringify(user));
+    const user = {
+      _id: userId,
+      email: "fahad.shoukat111@gmail.com",
+      creditBlance:10
+    };
     return JSON.parse(JSON.stringify(user));
   } catch (error) {}
 }
